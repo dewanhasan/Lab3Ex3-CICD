@@ -9,18 +9,19 @@ import java.util.List;
 
 @Service
 public class LibraryService {
-    private List<Book> books = new ArrayList<>();
+    private ArrayList<Book> books = new ArrayList<Book>();
 
     public void addBook(Book book){
-        this.addBook(book);
+        books.add(book);
 
-        System.out.println("tittle " +book.getTittle());
+        System.out.println("tittle " +book.getTitle());
         System.out.println("author " +book.getAuthor());
         System.out.println("isbn" +book.getIsbn());
         System.out.println(("publishedYear" +book.getPublishedYear()));
     }
 
-    public List<Book> getBooks(){
+    public ArrayList<Book> getBooks(){
+        System.out.println("returning books");
         return books;
     }
 }
