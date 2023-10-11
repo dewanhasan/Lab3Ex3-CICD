@@ -5,22 +5,25 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
 public class LibraryController {
-
-    @Autowired
     private  LibraryService libraryService;
+    @Autowired
+    public void injectedConstructor(LibraryService libraryService) {
+        this.libraryService = libraryService;
+    }
 
     @PostMapping("/add")
     @ResponseStatus(HttpStatus.ACCEPTED)
-    public LibraryService addBookstoLib(@RequestBody LibraryService libraryService){
-        return libraryService;
+    public void addBookstoLib(@RequestBody Book book){
+        libraryService.addBook(book);
     }
 
     @GetMapping("/get")
-    public List<Book> getBooks(){
+    public ArrayList<Book> getBooks(){
         return libraryService.getBooks();
     }
 
